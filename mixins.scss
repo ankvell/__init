@@ -9,13 +9,6 @@
   font-size: calculateRem($size);
 }
 
-// usage
-p {
-  @include font-size(14px)
-}
-
-
-
 // CSS3-PREFIX
  @mixin css3-prefix($property, $value) {
     -webkit-#{$property}: #{$value};
@@ -25,11 +18,6 @@ p {
     -o-#{$property}: #{$value};
     #{$property}: #{$value}
 }
-
-// usage
-@include css3-prefix('property', value);
-
-
 
 // BREAKPOINTS
 @mixin bp-large {
@@ -47,20 +35,6 @@ p {
     @content;
   }
 }
-
-// usage
-.sidebar {
-  width: 60%;
-  float: left;
-  margin: 0 2% 0 0;
-  @include bp-small {
-    width: 100%;
-    float: none;
-    margin: 0;
-  }
-}
-
-
 
 // ANIMATIONS & KEYFRAMES
 @mixin keyframes($animation-name) {
@@ -90,21 +64,6 @@ p {
     background-color: rgba($hexcolor, $opacity);
 }
 
-// usage
-@include keyframes(slide-down) {
-  0% { opacity: 1; }
-  90% { opacity: 0; }
-}
-
-.element {
-  width: 100px;
-  height: 100px;
-  background: #000;
-  @include animation('slide-down 5s 3');
-}
-
-
-
 // TRANSITION
 @mixin transition($args...) {
   -webkit-transition: $args;
@@ -114,30 +73,12 @@ p {
   transition: $args;
 }
 
-// usage
-a {
-  color: #ddd;
-  @include transition(color .3s ease);
-  &:hover {
-    color: #000;
-  }
-}
-
-
-
 // CROSS BROWSER OPACITY
 @mixin opacity($opacity) {
   opacity: $opacity;
   $opacity-ie: $opacity * 100;
   filter: alpha(opacity=$opacity-ie); //IE8
 }
-
-// usage
-.faded-text {
-  @include opacity(.8);
-}
-
-
 
 // CLEARFIX
 %clearfix {
@@ -151,25 +92,21 @@ a {
   }
 }
 
-// usage
+/*
 .container-with-floated-children {
   @extend %clearfix;
 }
-
-// OR
+ OR
 @mixin cfx() {
     &:after {content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0}
 }
-
-
+*/
 
 // COLUMN
 @mixin columns($count: 2, $gap: 0) {
     @include css3-prefix('column-count', $count);
     @include css3-prefix('column-gap', $gap);
 }
-
-
 
 // TRANSITION
 @mixin transition($property: all, $duration: .5s, $easing: ease) {
